@@ -1,0 +1,47 @@
+<div class="mx-auto max-w-2xl p-8">
+  <h1 class="mb-6 text-3xl font-bold">
+    Add Investor
+  </h1>
+  <form action="/investors" method="post">
+    <%= csrf_meta_tags %>
+    <div class="mb-4">
+      <label>Name</label>
+      <input
+        name="name"
+        class="mt-1 w-full rounded border p-2"
+      >
+      </div>
+      <div class="mb-4">
+        <label>Status</label>
+        <input
+        name="status"
+        class="mt-1 w-full rounded border p-2"
+      >
+        </div>
+        <div class="mb-4">
+          <label>Commitment Amount</label>
+          <input
+        name="commitment_amount"
+        class="mt-1 w-full rounded border p-2"
+      >
+          </div>
+          <div class="mb-6">
+            <label>Next Action</label>
+            <input
+        name="next_action"
+        class="mt-1 w-full rounded border p-2"
+      >
+            </div>
+            <div class="my-4 flex justify-between">
+              <%= link_to "Back",
+            root_path,
+            class: "rounded bg-slate-200 px-4 py-3 text-slate-800" %>
+              <button
+      type="submit"
+      class="rounded bg-slate-900 px-4 py-3 text-white"
+    >
+                Save Investor
+              </button>
+            </div>
+          </form>
+        </div>
