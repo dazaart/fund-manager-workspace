@@ -1,0 +1,13 @@
+<h1>LP Pipeline</h1>
+
+<ul>
+  <% @investors.each do |investor| %>
+    <li>
+      <%= investor.name %>
+      -
+      <%= investor.status %>
+      -
+      $<%= investor.commitment_amount %>
+    </li>
+  <% end %>
+</ul>
