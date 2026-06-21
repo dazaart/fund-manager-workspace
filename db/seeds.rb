@@ -1,9 +1,17 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+Investor.find_or_create_by!(name: "Sophia Chen") do |investor|
+  investor.status = "Interested"
+  investor.commitment_amount = 250_000
+  investor.next_action = "Send fund deck"
+end
+
+Investor.find_or_create_by!(name: "Marcus Lee") do |investor|
+  investor.status = "Meeting Scheduled"
+  investor.commitment_amount = 500_000
+  investor.next_action = "Prepare partner meeting"
+end
+
+Investor.find_or_create_by!(name: "Elena Rossi") do |investor|
+  investor.status = "Committed"
+  investor.commitment_amount = 1_000_000
+  investor.next_action = "Send closing documents"
+end
