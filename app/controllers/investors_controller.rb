@@ -1,15 +1,26 @@
 class InvestorsController < ApplicationController
   def new
+    @investor = Investor.new
   end
 
   def create
-    Investor.create!(
-      name: params[:name],
-      status: params[:status],
-      commitment_amount: params[:commitment_amount],
-      next_action: params[:next_action]
-    )
+    @investor = Investor.new(investor_params)
 
-    redirect_to root_path
+    if @investor.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def investor_params
+    params.require(:investor).permit(
+      :name,
+      :status,
+      :commitment_amount,
+      :next_action
+    )
   end
 end

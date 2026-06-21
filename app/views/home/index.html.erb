@@ -14,6 +14,41 @@
         Track prospective limited partners, commitment amounts, and next fundraising actions.
       </p>
     </header>
+    <section class="mb-8 grid gap-4 md:grid-cols-3">
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-medium text-slate-500">
+          Total Raised
+        </p>
+        <p class="mt-2 text-3xl font-bold text-slate-950">
+          <%= number_to_currency(@total_raised, precision: 0) %>
+        </p>
+        <p class="mt-1 text-sm text-slate-500">
+          Across all investor commitments
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-medium text-slate-500">
+          Investors
+        </p>
+        <p class="mt-2 text-3xl font-bold text-slate-950">
+          <%= @investor_count %>
+        </p>
+        <p class="mt-1 text-sm text-slate-500">
+          Active LP conversations
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-sm font-medium text-slate-500">
+          Committed LPs
+        </p>
+        <p class="mt-2 text-3xl font-bold text-slate-950">
+          <%= @committed_count %>
+        </p>
+        <p class="mt-1 text-sm text-slate-500">
+          Ready for closing workflow
+        </p>
+      </div>
+    </section>
     <section class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
       <div class="border-b border-slate-200 px-6 py-4">
         <h2 class="font-semibold text-slate-950">Investors</h2>
@@ -36,21 +71,9 @@
                 </div>
               </td>
               <td class="px-6 py-4">
-                <% badge_classes =
-    case investor.status
-    when "Interested"
-      "bg-yellow-100 text-yellow-800"
-    when "Meeting Scheduled"
-      "bg-blue-100 text-blue-800"
-    when "Committed"
-      "bg-green-100 text-green-800"
-    else
-      "bg-slate-100 text-slate-700"
-    end
-  %>
-                <span class="rounded-full px-3 py-1 text-xs font-medium <%= badge_classes %>">
-                  <%= investor.status %>
-                </span>
+                <span
+    class="rounded-full px-3 py-1 text-xs font-medium <%= status_badge_classes(investor.status) %>"<>
+                  <%= investor.status %> </span>
               </td>
             </td>
             <td class="px-6 py-4 text-right font-medium text-slate-950">

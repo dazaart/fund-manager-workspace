@@ -1,2 +1,29 @@
 class Investor < ApplicationRecord
+  STATUSES = [
+    "New",
+    "Interested",
+    "Meeting Scheduled",
+    "Committed",
+    "Passed"
+  ].freeze
+
+  NEXT_ACTIONS = [
+    "Send fund deck",
+    "Schedule intro call",
+    "Prepare partner meeting",
+    "Send closing documents",
+    "Follow up next week"
+  ].freeze
+
+  validates :name, presence: true
+  validates :status, presence: true, inclusion: { in: STATUSES, allow_blank: true }
+  validates :next_action, presence: true, inclusion: { in: NEXT_ACTIONS, allow_blank: true }
+
+  validates :commitment_amount,
+            presence: true,
+            numericality: {
+              only_integer: true,
+              greater_than: 0,
+              allow_blank: true
+            }
 end
