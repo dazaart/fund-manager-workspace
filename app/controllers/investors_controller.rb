@@ -6,11 +6,32 @@ class InvestorsController < ApplicationController
   def create
     @investor = Investor.new(investor_params)
 
-    if @investor.save
-      redirect_to root_path
+   if @investor.save
+  redirect_to root_path, notice: "Investor added successfully."
+   else
+  render :new, status: :unprocessable_entity
+   end
+  end
+
+  def edit
+    @investor = Investor.find(params[:id])
+  end
+
+  def update
+    @investor = Investor.find(params[:id])
+
+    if @investor.update(investor_params)
+      redirect_to root_path, notice: "Investor updated successfully."
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+  @investor = Investor.find(params[:id])
+  @investor.destroy
+
+  redirect_to root_path, notice: "Investor deleted successfully."
   end
 
   private

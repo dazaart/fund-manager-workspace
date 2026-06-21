@@ -1,0 +1,54 @@
+   <% if @investor&.errors&.any? %>
+  <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
+    <p class="font-medium">
+      Please fix the following errors:
+    </p>
+    <ul class="mt-2 list-disc pl-5 text-sm">
+      <% @investor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with model: @investor,
+    class: "space-y-5",
+    data: (@investor.persisted? ? {
+      controller: "dirty-form",
+      action: "input->dirty-form#update change->dirty-form#update"
+    } : {}) do |form| %>
+  <div>
+    <%= form.label :name, class: "block font-medium text-slate-900" %>
+    <%= form.text_field :name, class: field_classes(@investor, :name) %>
+  </div>
+  <div>
+    <%= form.label :status, class: "block font-medium text-slate-900" %>
+    <%= form.select :status,
+        Investor::STATUSES,
+        { prompt: "Select status" },
+        class:field_classes(@investor, :status) %>
+  </div>
+  <div>
+    <%= form.label :commitment_amount, "Commitment Amount", class: "block font-medium text-slate-900" %>
+    <%= form.number_field :commitment_amount,
+        min: 1,
+        step: 1,
+        class: field_classes(@investor, :commitment_amount) %>
+  </div>
+  <div>
+    <%= form.label :next_action, "Next Action", class: "block font-medium text-slate-900" %>
+    <%= form.select :next_action,
+        Investor::NEXT_ACTIONS,
+        { prompt: "Select next action" },
+        class: field_classes(@investor, :next_action) %>
+  </div>
+  <div class="flex items-center justify-between pt-4">
+    <%= link_to "Back",
+        root_path,
+        class: "rounded-lg bg-slate-200 px-4 py-2 text-slate-800" %>
+    <%= form.submit "Save Investor",
+    class: "rounded-lg bg-slate-900 px-4 py-2 text-white transition",
+    data: (@investor.persisted? ? {
+      dirty_form_target: "submit"
+    } : {}) %>
+  </div>
+<% end %>

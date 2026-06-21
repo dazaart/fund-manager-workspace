@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-slate-50 px-6 py-8">
   <div class="my-4">
     <%= link_to "Add Investor",
-            investors_new_path,
+            new_investor_path,
             class: "rounded-lg bg-slate-900 px-4 py-2 text-white" %>
   </div>
   <main class="mx-auto max-w-6xl">
@@ -60,6 +60,8 @@
             <th class="px-6 py-3 font-medium">Status</th>
             <th class="px-6 py-3 text-right font-medium">Commitment</th>
             <th class="px-6 py-3 font-medium">Next Action</th>
+            <th class="px-6 py-3 font-medium">Edit</th>
+            <th class="px-6 py-3 font-medium">Delete</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-100">
@@ -81,6 +83,22 @@
             </td>
             <td class="px-6 py-4 text-slate-600">
               <%= investor.next_action %>
+            </td>
+            <td class="px-6 py-4">
+              <%= link_to "Edit",
+      edit_investor_path(investor),
+      class: "text-blue-600 hover:underline" %>
+            </td>
+            <td  class="px-6 py-4">
+              <%= button_to "Delete",
+    investor_path(investor),
+    method: :delete,
+    class: "text-red-600 hover:underline",
+    form: {
+      data: {
+        turbo_confirm: "Delete this investor?"
+      }
+    } %>
             </td>
           </tr>
         <% end %>
