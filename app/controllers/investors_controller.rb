@@ -7,7 +7,9 @@ class InvestorsController < ApplicationController
     @investor = Investor.new(investor_params)
 
    if @investor.save
-  redirect_to root_path, notice: "Investor added successfully."
+  redirect_to root_path(
+  highlighted_investor_id: @investor.id
+), notice: "Investor added successfully."
    else
   render :new, status: :unprocessable_entity
    end
@@ -21,7 +23,9 @@ class InvestorsController < ApplicationController
     @investor = Investor.find(params[:id])
 
     if @investor.update(investor_params)
-      redirect_to root_path, notice: "Investor updated successfully."
+      redirect_to root_path(
+  highlighted_investor_id: @investor.id
+), notice: "Investor updated successfully."
     else
       render :edit, status: :unprocessable_entity
     end

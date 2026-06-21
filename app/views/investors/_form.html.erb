@@ -18,28 +18,40 @@
     } : {}) do |form| %>
   <div>
     <%= form.label :name, class: "block font-medium text-slate-900" %>
-    <%= form.text_field :name, class: field_classes(@investor, :name) %>
+    <%= form.text_field :name, class: field_classes(@investor, :name),  data: {
+      controller: "field-error",
+      action: "input->field-error#clear"
+    }  %>
   </div>
   <div>
     <%= form.label :status, class: "block font-medium text-slate-900" %>
     <%= form.select :status,
         Investor::STATUSES,
         { prompt: "Select status" },
-        class:field_classes(@investor, :status) %>
+        class:field_classes(@investor, :status) ,data: {
+      controller: "field-error",
+      action: "change->field-error#clear"
+    }%>
   </div>
   <div>
     <%= form.label :commitment_amount, "Commitment Amount", class: "block font-medium text-slate-900" %>
     <%= form.number_field :commitment_amount,
         min: 1,
         step: 1,
-        class: field_classes(@investor, :commitment_amount) %>
+        class: field_classes(@investor, :commitment_amount),  data: {
+      controller: "field-error",
+      action: "input->field-error#clear"
+    } %>
   </div>
   <div>
     <%= form.label :next_action, "Next Action", class: "block font-medium text-slate-900" %>
     <%= form.select :next_action,
         Investor::NEXT_ACTIONS,
         { prompt: "Select next action" },
-        class: field_classes(@investor, :next_action) %>
+        class: field_classes(@investor, :next_action), data: {
+      controller: "field-error",
+      action: "change->field-error#clear"
+    } %>
   </div>
   <div class="flex items-center justify-between pt-4">
     <%= link_to "Back",
