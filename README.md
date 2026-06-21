@@ -1,24 +1,87 @@
-# README
+# Fund Manager Workspace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A lightweight investor relationship management (IRM) application built with Ruby on Rails.
 
-Things you may want to cover:
+## Overview
 
-* Ruby version
+Fund Manager Workspace helps fund managers track investor conversations, commitments, and fundraising progress through a simple dashboard and investor management workflow.
 
-* System dependencies
+The application provides:
 
-* Configuration
+* Investor tracking
+* Commitment management
+* Fundraising pipeline visibility
+* Dashboard metrics
+* Investor editing and status updates
 
-* Database creation
+## Features
 
-* Database initialization
+### Dashboard
 
-* How to run the test suite
+* Total Investors
+* Committed Investors
+* Committed Capital
+* Pipeline Capital
 
-* Services (job queues, cache servers, search engines, etc.)
+### Investor Management
 
-* Deployment instructions
+* Create investors
+* Edit investors
+* Validation handling
+* Status tracking
+* Next action tracking
 
-* ...
+### User Experience
+
+* Inline validation feedback
+* Dirty-form detection
+* Disabled save button when no changes are present
+* Success notifications
+* Highlight recently updated investors
+
+## Tech Stack
+
+* Ruby on Rails 8
+* SQLite
+* Stimulus
+* Tailwind CSS
+* GitHub Actions
+* Render
+
+## Running Locally
+
+```bash
+git clone <repository-url>
+cd fund-manager-workspace
+
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+
+bin/dev
+```
+
+Visit:
+
+http://localhost:3000
+
+## Deployment
+
+The application is deployed on Render.
+
+Live Demo:
+
+https://fund-manager-workspace.onrender.com
+
+## Future Improvements
+
+* PostgreSQL support
+* Investor notes
+* Activity timeline
+* Filtering and search
+* Authentication
+* CSV import/export
+
+## Author
+
+Built by daza and chatGpt as a Ruby on Rails learning project.
