@@ -30,6 +30,7 @@ The application provides:
 * Validation handling
 * Status tracking
 * Next action tracking
+* Show investor details on dedicated page
 
 ### User Experience
 
@@ -77,7 +78,6 @@ https://fund-manager-workspace.onrender.com
 
 * PostgreSQL support
 * Investor notes
-* Activity timeline
 * Filtering and search
 * Authentication
 * CSV import/export
