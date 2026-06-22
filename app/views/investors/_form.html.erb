@@ -55,8 +55,8 @@
   </div>
   <div class="flex items-center justify-between pt-4">
     <%= link_to "Back",
-        root_path,
-        class: "rounded-lg bg-slate-200 px-4 py-2 text-slate-800" %>
+    (@investor.persisted? ? @investor : root_path),
+    class: "rounded-lg bg-slate-200 px-4 py-2 text-slate-800" %>
     <%= form.submit "Save Investor",
     class: "rounded-lg bg-slate-900 px-4 py-2 text-white transition",
     data: (@investor.persisted? ? {

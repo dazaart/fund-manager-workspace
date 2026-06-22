@@ -3,8 +3,7 @@ class Investor < ApplicationRecord
     "New",
     "Interested",
     "Meeting Scheduled",
-    "Committed",
-    "Passed"
+    "Committed"
   ].freeze
 
     STATUS_STEPS = [
