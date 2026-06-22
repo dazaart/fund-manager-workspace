@@ -1,0 +1,33 @@
+<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+  <p class="mb-5 text-sm font-medium text-slate-500">
+    Fundraising progress
+  </p>
+  <div class="flex items-center">
+    <% Investor::STATUS_STEPS.each_with_index do |step, index| %>
+      <% completed = step_completed?(investor, step) %>
+      <% current = current_step?(investor, step) %>
+      <div class="flex items-center">
+        <div class="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold
+          <%= if current
+                status_badge_classes(step)
+            elsif completed
+                'bg-slate-900 text-white'
+            else
+                'bg-slate-200 text-slate-500'
+            end %>">
+          <%= completed ? "✓" : index + 1 %>
+        </div>
+        <span class="ml-3 text-sm font-medium <%= completed ? 'text-slate-900' : 'text-slate-500' %>">
+          <%= step %>
+        </span>
+      </div>
+      <% unless index == Investor::STATUS_STEPS.length - 1 %>
+        <div class="mx-4 h-px flex-1
+            <%= index < Investor::STATUS_STEPS.index(investor.status) ?
+                'bg-slate-900' :
+                'bg-slate-200' %>">
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

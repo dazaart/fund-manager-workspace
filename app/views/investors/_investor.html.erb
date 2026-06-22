@@ -3,7 +3,9 @@
   '' %>">
   <td class="px-6 py-4">
     <div class="font-medium text-slate-950">
-      <%= investor.name %>
+      <%= link_to investor.name,
+        investor_path(investor),
+        class: "font-medium text-slate-900 hover:text-blue-600" %>
     </div>
   </td>
   <td class="px-6 py-4">

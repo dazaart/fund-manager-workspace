@@ -7,6 +7,13 @@ class Investor < ApplicationRecord
     "Passed"
   ].freeze
 
+    STATUS_STEPS = [
+    "New",
+    "Interested",
+    "Meeting Scheduled",
+    "Committed"
+  ].freeze
+
   NEXT_ACTIONS = [
     "Send fund deck",
     "Schedule intro call",

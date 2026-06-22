@@ -38,6 +38,10 @@ class InvestorsController < ApplicationController
   redirect_to root_path, notice: "Investor deleted successfully."
   end
 
+  def show
+  @investor = Investor.find(params[:id])
+  end
+
   private
 
   def investor_params

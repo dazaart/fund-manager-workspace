@@ -1,0 +1,37 @@
+<div class="min-h-screen bg-slate-50 px-6 py-8">
+  <main class="mx-auto w-full max-w-5xl">
+    <div class="mb-8">
+      <%= link_to "← Back to Dashboard",
+          root_path,
+          class: "text-sm font-medium text-slate-500 hover:text-slate-900" %>
+    </div>
+    <header class="mb-8 flex items-start justify-between">
+      <div>
+        <p class="text-sm font-medium text-slate-500">
+          Investor Profile
+        </p>
+        <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-950">
+          <%= @investor.name %>
+        </h1>
+      </div>
+      <%= link_to "Edit Investor",
+          edit_investor_path(@investor),
+          class: "rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700" %>
+    </header>
+    <div class="mb-6">
+      <%= render "progress", investor: @investor %>
+    </div>
+    <section class="grid gap-4 md:grid-cols-3">
+      <%= render "shared/stat_card",
+          title: "Commitment",
+          value: number_to_currency(@investor.commitment_amount, precision: 0),
+          description: "Expected LP commitment" ,
+          value_class: "text-emerald-600" 
+          %>
+      <%= render "shared/stat_card",
+          title: "Next Action",
+          value: @investor.next_action,
+          description: "Recommended follow-up" %>
+    </section>
+  </main>
+</div>
