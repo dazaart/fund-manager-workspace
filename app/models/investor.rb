@@ -18,9 +18,15 @@ class Investor < ApplicationRecord
     "Send fund deck",
     "Schedule intro call",
     "Prepare partner meeting",
-    "Send closing documents",
-    "Follow up next week"
+    "Send closing documents"
   ].freeze
+
+  ACTION_STEPS = [
+  "Send fund deck",
+  "Schedule intro call",
+  "Prepare partner meeting",
+  "Send closing documents"
+].freeze
 
   validates :name, presence: true
   validates :status, presence: true, inclusion: { in: STATUSES, allow_blank: true }

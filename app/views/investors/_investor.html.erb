@@ -1,6 +1,5 @@
-<tr class="hover:bg-slate-50 <%= investor.id == params[:highlighted_investor_id].to_i ?
-  'bg-green-50' :
-  '' %>">
+<tr  class="cursor-pointer hover:bg-slate-50"
+  onclick="window.location='<%= investor_path(investor) %>'">
   <td class="px-6 py-4">
     <div class="font-medium text-slate-950">
       <%= link_to investor.name,
@@ -19,21 +18,5 @@
 </td>
 <td class="px-6 py-4 text-slate-600">
   <%= investor.next_action %>
-</td>
-<td class="px-6 py-4">
-  <%= link_to "Edit",
-      edit_investor_path(investor),
-      class: "text-blue-600 hover:underline" %>
-</td>
-<td  class="px-6 py-4">
-  <%= button_to "Delete",
-    investor_path(investor),
-    method: :delete,
-    class: "text-red-600 hover:underline",
-    form: {
-      data: {
-        turbo_confirm: "Delete this investor?"
-      }
-    } %>
 </td>
 </tr>

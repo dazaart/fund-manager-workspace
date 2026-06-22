@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-slate-50 px-6 py-8">
+<div class="mx-auto min-h-screen bg-slate-50 px-6 py-8 w-5xl">
   <main class="mx-auto w-full max-w-5xl">
     <div class="mb-8">
       <%= link_to "← Back to Dashboard",
@@ -14,24 +14,34 @@
           <%= @investor.name %>
         </h1>
       </div>
-      <%= link_to "Edit Investor",
+      <div class="mt-6">
+        <%= link_to "Edit Investor",
           edit_investor_path(@investor),
-          class: "rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700" %>
+          class: " rounded-lg bg-slate-900 px-4 py-3 text-sm font-medium text-white hover:bg-slate-700" %>
+      </div>
     </header>
     <div class="mb-6">
       <%= render "progress", investor: @investor %>
     </div>
-    <section class="grid gap-4 md:grid-cols-3">
+    <section class="grid gap-4 md:grid-cols-2">
       <%= render "shared/stat_card",
           title: "Commitment",
           value: number_to_currency(@investor.commitment_amount, precision: 0),
           description: "Expected LP commitment" ,
           value_class: "text-emerald-600" 
           %>
-      <%= render "shared/stat_card",
-          title: "Next Action",
-          value: @investor.next_action,
-          description: "Recommended follow-up" %>
+      <%= render "action_timeline", investor: @investor %>
     </section>
+    <div  class="text-right">
+      <%= button_to "Delete Investor",
+    investor_path(@investor),
+    method: :delete,
+    class: "mt-4 rounded-lg bg-red-900 px-4 py-2 text-sm font-medium text-white",
+    form: {
+      data: {
+        turbo_confirm: "Delete this investor?"
+      }
+    } %>
+    </div>
   </main>
 </div>
