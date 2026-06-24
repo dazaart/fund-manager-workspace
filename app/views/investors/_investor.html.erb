@@ -1,10 +1,10 @@
-<tr  class="cursor-pointer hover:bg-slate-50"
+<tr  class="cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800"
   onclick="window.location='<%= investor_path(investor) %>'">
   <td class="px-6 py-4">
-    <div class="font-medium text-slate-950">
+    <div class="font-medium ">
       <%= link_to investor.name,
         investor_path(investor),
-        class: "font-medium text-slate-900 hover:text-blue-600" %>
+        class: "font-medium text-slate-900 hover:text-blue-600 dark:text-slate-100 " %>
     </div>
   </td>
   <td class="px-6 py-4">
@@ -13,10 +13,10 @@
       <%= investor.status %> </span>
   </td>
 </td>
-<td class="px-6 py-4 text-right font-medium text-slate-950">
+<td class="px-6 py-4 text-right font-medium text-slate-950 dark:text-slate-100">
   <%= number_to_currency(investor.commitment_amount, precision: 0) %>
 </td>
-<td class="px-6 py-4 text-slate-600">
+<td class="px-6 py-4 text-slate-600 dark:text-slate-200">
   <%= investor.next_action %>
 </td>
 </tr>

@@ -13,6 +13,7 @@ export default class extends Controller {
     this.submitTarget.disabled = !isDirty
     this.submitTarget.classList.toggle("opacity-50", !isDirty)
     this.submitTarget.classList.toggle("cursor-not-allowed", !isDirty)
+    this.submitTarget.classList.toggle("cursor-pointer", isDirty)
   }
 
   formValue() {

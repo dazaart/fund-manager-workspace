@@ -56,9 +56,9 @@
   <div class="flex items-center justify-between pt-4">
     <%= link_to "Back",
     (@investor.persisted? ? @investor : root_path),
-    class: "rounded-lg bg-slate-200 px-4 py-2 text-slate-800" %>
+    class: "rounded-lg bg-slate-200 px-4 py-2 text-slate-800 dark:bg-slate-700 dark:text-slate-200" %>
     <%= form.submit "Save Investor",
-    class: "rounded-lg bg-slate-900 px-4 py-2 text-white transition",
+    class: "rounded-lg bg-slate-900 px-4 py-2 text-white transition dark:bg-slate-100 dark:text-slate-950",
     data: (@investor.persisted? ? {
       dirty_form_target: "submit"
     } : {}) %>
