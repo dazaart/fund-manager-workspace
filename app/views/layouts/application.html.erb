@@ -30,8 +30,9 @@
     <button
   data-controller="theme"
   data-action="click->theme#toggle"
-      class="fixed top-6 right-6 z-50 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg dark:bg-white dark:text-slate-900">
-      Toggle theme
+      class="fixed top-8 right-8 z-50 rounded-full bg-slate-900 p-3 text-white shadow-lg dark:bg-white dark:text-slate-900">
+      <%= render "shared/icon", name: "moon" %>
+      <%= render "shared/icon", name: "sun" %>
     </button>
   </body>
   <% if notice.present? %>
