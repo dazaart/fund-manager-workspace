@@ -1,4 +1,4 @@
-<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:bg-slate-950 dark:border-slate-700 ">
+<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:bg-slate-950 dark:border-slate-500 ">
   <p class="mb-5 text-sm font-medium text-slate-500 dark:text-slate-300">
     Fundraising progress
   </p>
@@ -13,19 +13,20 @@
             elsif completed
                 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950'
             else
-                'bg-slate-200 text-slate-500 dark:bg-slate-700 dark:text-slate-300'
+                'bg-slate-200 text-slate-500 dark:bg-slate-500 dark:text-slate-200'
             end %>">
           <%= completed ? "✓" : index + 1 %>
         </div>
-        <span class="ml-3 text-sm font-medium <%= completed ? 'text-slate-900 dark:text-slate-100' : 'text-slate-500 dark:text-slate-300' %>">
+        <span class="ml-3 text-sm font-medium
+  <%= current ? status_text_color(step) : completed ? "text-slate-900 dark:text-slate-100" : "text-slate-400 " %>">
           <%= step %>
         </span>
       </div>
       <% unless index == Investor::STATUS_STEPS.length - 1 %>
         <div class="mx-4 h-px flex-1
             <%= index < Investor::STATUS_STEPS.index(investor.status) ?
-                'bg-slate-900 dark:bg-slate-100' :
-                'bg-slate-200 dark:bg-slate-700' %>">
+                'bg-slate-900 dark:bg-slate-300' :
+                'bg-slate-200 dark:bg-slate-600' %>">
         </div>
       <% end %>
     <% end %>

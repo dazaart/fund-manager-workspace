@@ -1,4 +1,4 @@
-<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:bg-slate-950 dark:border-slate-700">
+<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:bg-slate-950 dark:border-slate-500">
   <p class="mb-6 text-sm font-medium text-slate-500 dark:text-slate-300">
     Action timeline
   </p>
@@ -9,22 +9,22 @@
       <div class="relative pl-8">
         <div class="absolute left-0 top-1.5 flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold
           <%= if current
-                'bg-blue-100 text-blue-800 ring-4 ring-blue-50 dark:ring-slate-600 dark:text-blue-600'
+                'bg-blue-100 text-blue-600 ring-4 ring-blue-300 dark:ring-blue-600 dark:text-blue-600'
               elsif completed
                 'bg-slate-900 text-white dark:text-slate-950 dark:bg-slate-200'
               else
-                'bg-slate-200 text-slate-500 dark:text-slate-300 dark:bg-slate-600'
+                'bg-slate-200 text-slate-500 dark:text-slate-300 dark:bg-slate-500'
               end %>">
           <%= completed ? "✓" : index + 1 %>
         </div>
         <% unless index == Investor::ACTION_STEPS.length - 1 %>
           <div class="absolute left-2 top-6 h-full w-px
-            <%= index < Investor::ACTION_STEPS.index(investor.next_action).to_i ? 'bg-slate-900 dark:bg-slate-100' : 'bg-slate-200 dark:bg-slate-700' %>">
+            <%= index < Investor::ACTION_STEPS.index(investor.next_action).to_i ? 'bg-slate-900 dark:bg-slate-100' : 'bg-slate-200 dark:bg-slate-600' %>">
           </div>
         <% end %>
         <p class="font-medium
   <%= if current
-        'text-blue-800 dark:text-blue-600'
+        'text-blue-600 dark:text-blue-500'
       elsif completed
         'text-slate-950 dark:text-slate-100'
       else
